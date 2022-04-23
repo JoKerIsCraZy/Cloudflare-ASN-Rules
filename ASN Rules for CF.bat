@@ -14,7 +14,7 @@ echo.
 :::\____/_/      /_/  |_/____/_/ |_/    /_/ |_|\__,_/_/\___/____/
 echo.                                                                            
 echo.
-set /p ZONE=CF Zone:
+set /p ZONE=CF Zone ID:
 echo.                                                                            
 echo.
 set /p EMAIL=CF Email:
