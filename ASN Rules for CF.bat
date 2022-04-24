@@ -30,7 +30,7 @@ goto ASN
 
 :ASN
 cls
-92\"}}" --ssl-no-revoke
+curl -X POST "https://api.cloudflare.com/client/v4/zones/%ZONE%/firewall/access_rules/rules" -H "X-Auth-Email: %EMAIL%" -H "X-Auth-Key: %API%" -H "Content-Type: application/json" --data "{\"mode\":\"managed_challenge\", \"configuration\": {\"target\":\"asn\", \"value\":\"92\"}}" --ssl-no-revoke
 curl -X POST "https://api.cloudflare.com/client/v4/zones/%ZONE%/firewall/access_rules/rules" -H "X-Auth-Email: %EMAIL%" -H "X-Auth-Key: %API%" -H "Content-Type: application/json" --data "{\"mode\":\"managed_challenge\", \"configuration\": {\"target\":\"asn\", \"value\":\"174\"}}" --ssl-no-revoke
 curl -X POST "https://api.cloudflare.com/client/v4/zones/%ZONE%/firewall/access_rules/rules" -H "X-Auth-Email: %EMAIL%" -H "X-Auth-Key: %API%" -H "Content-Type: application/json" --data "{\"mode\":\"managed_challenge\", \"configuration\": {\"target\":\"asn\", \"value\":\"209\"}}" --ssl-no-revoke
 curl -X POST "https://api.cloudflare.com/client/v4/zones/%ZONE%/firewall/access_rules/rules" -H "X-Auth-Email: %EMAIL%" -H "X-Auth-Key: %API%" -H "Content-Type: application/json" --data "{\"mode\":\"managed_challenge\", \"configuration\": {\"target\":\"asn\", \"value\":\"612\"}}" --ssl-no-revoke
