@@ -1,6 +1,8 @@
 # Cloudflare-ASN-Rules
 
-Rules for Cloudflare that put a "Managed Challenge" on bad ASNs
+Rules for Cloudflare that puts an "Managed Challenge" on bad ASN
+This project uses the list of bad ASNs published by FireHOL (https://iplists.firehol.org).
+
 
 How to use it:
 
