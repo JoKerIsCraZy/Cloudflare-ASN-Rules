@@ -1,5 +1,5 @@
 # Cloudflare-ASN-Rules
-Rules for Cloudflare that puts an "Managed Challenge" on bad ASN
+Rules for Cloudflare that puts a "Managed Challenge" on bad ASN
 
 How to use it:
 
