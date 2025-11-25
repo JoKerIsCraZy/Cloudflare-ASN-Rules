@@ -1,17 +1,55 @@
-# Cloudflare-ASN-Rules
+# Cloudflare ASN Rules Updater
 
-Rules for Cloudflare that puts an "Managed Challenge" on bad ASN
-This project uses the list of bad ASNs published by FireHOL (https://iplists.firehol.org).
+This project helps you block malicious traffic from specific Autonomous Systems (ASNs) using Cloudflare's modern **ASN Lists** and **WAF Custom Rules**.
 
+This is a modern replacement for the old IP Access Rules method, offering better performance and management.
 
-How to use it:
+## Features
+- **Modern API**: Uses Cloudflare's ASN Lists and WAF Custom Rules.
+- **Bulk Management**: Manages hundreds of ASNs efficiently.
+- **Cross-Platform**: Scripts available for Python, Bash (Linux/macOS), and Windows Batch/PowerShell.
 
-1. Run the .bat file
+## Prerequisites
+- **Cloudflare Account**: You need a Cloudflare account and a Zone ID.
+- **API Token**: Create an API Token with the following permissions:
+    - `Zone` > `Zone` > `Read`
+    - `Zone` > `Firewall Services` > `Edit`
+    - `Account` > `Account Filter Lists` > `Edit`
 
-2. Put in the Zone ID from the domain you want to add the rules.
+## Usage
 
-3. Put your Cloudflare email
+### Option 1: Python (Recommended)
+Requires Python 3.x installed.
 
-4. Get your Cloudflare Global API key and put it in (https://dash.cloudflare.com/profile/api-tokens)
+1.  Open a terminal.
+2.  Run the script:
+    ```bash
+    python update_asn_rules.py
+    ```
+3.  Follow the prompts to enter your Zone ID and API Token.
 
-5. Press any key to start adding the rules
+### Option 2: Windows Batch
+No Python required. Uses PowerShell built into Windows.
+
+1.  Double-click `update_asn_rules.bat`.
+2.  Follow the prompts.
+
+### Option 3: Bash (Linux/macOS)
+Requires `curl` and `jq`.
+
+1.  Make the script executable:
+    ```bash
+    chmod +x update_asn_rules.sh
+    ```
+2.  Run the script:
+    ```bash
+    ./update_asn_rules.sh
+    ```
+
+## How it works
+1.  Reads the list of ASNs from the `ASN List` file.
+2.  Creates or updates a Cloudflare **ASN List** named `managed_bad_asns` in your account.
+3.  Creates or updates a **WAF Custom Rule** named `Block Bad ASNs` in your zone to block/challenge traffic from these ASNs.
+
+## Source
+Original ASN list from [FireHOL](https://iplists.firehol.org).
