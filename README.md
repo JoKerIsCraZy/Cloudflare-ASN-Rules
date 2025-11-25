@@ -51,5 +51,13 @@ Requires `curl` and `jq`.
 2.  Creates or updates a Cloudflare **ASN List** named `managed_bad_asns` in your account.
 3.  Creates or updates a **WAF Custom Rule** named `Block Bad ASNs` in your zone to block/challenge traffic from these ASNs.
 
+## Updating the ASN List
+To fetch the latest list of bad ASNs from the source (brianhama/bad-asn-list), run:
+```bash
+python update_local_list.py
+```
+This will update the `ASN List` file locally. Then run one of the update scripts above to push the changes to Cloudflare.
+
 ## Source
 Original ASN list from [FireHOL](https://iplists.firehol.org).
+Current source: [brianhama/bad-asn-list](https://github.com/brianhama/bad-asn-list).
