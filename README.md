@@ -50,18 +50,6 @@ That's it — the menu takes over.
 Select [1/2/3/4/5/6/9/0] (3):
 ```
 
-> **Add screenshots:** drop PNGs into `docs/screenshots/` and they'll show up below.
->
-> - `docs/screenshots/menu.png` — main menu
-> - `docs/screenshots/status.png` — remote status view
-> - `docs/screenshots/remove-all.png` — cleanup confirmation
-
-<!-- Once images exist, uncomment:
-![Main menu](docs/screenshots/menu.png)
-![Remote status](docs/screenshots/status.png)
-![Remove all](docs/screenshots/remove-all.png)
--->
-
 ---
 
 ## 📋 Prerequisites
@@ -77,15 +65,15 @@ Select [1/2/3/4/5/6/9/0] (3):
 
 ## 🎛 Menu actions
 
-| # | Action | What it does |
-|---|--------|--------------|
-| 1 | **Download** | Fetches the latest bad-ASN list from [brianhama/bad-asn-list](https://github.com/brianhama/bad-asn-list) into the local `ASN List` file. Shows a diff versus your previous copy. |
-| 2 | **Push** | Uploads the local `ASN List` to Cloudflare. Creates the account list `managed_bad_asns` if missing, otherwise replaces all items atomically. Ensures the WAF Custom Rule exists and is enabled. |
-| 3 | **Full sync** | `Download` + `Push` in one step. Default for most users. |
-| 4 | **Remove all** | Destructive: deletes the WAF rule first (Cloudflare rejects deleting a referenced list), then deletes the ASN list. Optionally wipes local `ASN List` and `asn_state.json` too. Always asks to confirm. |
-| 5 | **Show remote** | Read-only status of the list + rule in your Cloudflare account. |
-| 6 | **Auto-update** | Runs `download → push` on a schedule (default 30 days) in the foreground. For unattended servers, cron/systemd is more reliable than keeping this process alive. |
-| 9 | **Settings** | Change the WAF action (`block`, `managed_challenge`, `js_challenge`, `challenge`, `log`), update zone ID / API token. Saves to `.cf_asn_config.json` — **token is never written to disk.** |
+| #   | Action          | What it does                                                                                                                                                                                            |
+| --- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | **Download**    | Fetches the latest bad-ASN list from [brianhama/bad-asn-list](https://github.com/brianhama/bad-asn-list) into the local `ASN List` file. Shows a diff versus your previous copy.                        |
+| 2   | **Push**        | Uploads the local `ASN List` to Cloudflare. Creates the account list `managed_bad_asns` if missing, otherwise replaces all items atomically. Ensures the WAF Custom Rule exists and is enabled.         |
+| 3   | **Full sync**   | `Download` + `Push` in one step. Default for most users.                                                                                                                                                |
+| 4   | **Remove all**  | Destructive: deletes the WAF rule first (Cloudflare rejects deleting a referenced list), then deletes the ASN list. Optionally wipes local `ASN List` and `asn_state.json` too. Always asks to confirm. |
+| 5   | **Show remote** | Read-only status of the list + rule in your Cloudflare account.                                                                                                                                         |
+| 6   | **Auto-update** | Runs `download → push` on a schedule (default 30 days) in the foreground. For unattended servers, cron/systemd is more reliable than keeping this process alive.                                        |
+| 9   | **Settings**    | Change the WAF action (`block`, `managed_challenge`, `js_challenge`, `challenge`, `log`), update zone ID / API token. Saves to `.cf_asn_config.json` — **token is never written to disk.**              |
 
 ---
 
@@ -118,13 +106,13 @@ python cf_asn.py
 
 ## 🗂 Files in this repo
 
-| File | Purpose |
-|------|---------|
-| `cf_asn.py` | **The tool.** Everything lives here. |
-| `requirements.txt` | `requests`, `rich`. |
-| `ASN List` | Local cache of current ASN numbers (one per line). |
+| File                  | Purpose                                                           |
+| --------------------- | ----------------------------------------------------------------- |
+| `cf_asn.py`           | **The tool.** Everything lives here.                              |
+| `requirements.txt`    | `requests`, `rich`.                                               |
+| `ASN List`            | Local cache of current ASN numbers (one per line).                |
 | `.cf_asn_config.json` | Auto-generated, gitignored; stores zone ID + action (no secrets). |
-| `asn_state.json` | Auto-generated, gitignored; sync state. |
+| `asn_state.json`      | Auto-generated, gitignored; sync state.                           |
 
 ---
 
